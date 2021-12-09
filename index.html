@@ -189,7 +189,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -237,6 +237,155 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://syivsy-apep.github.io/2021/12/09/Promise%E7%9B%B8%E5%85%B3%E9%A2%98%E7%9B%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Syivsy-Apep">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Syivsy-Apep的前端博客站">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/12/09/Promise%E7%9B%B8%E5%85%B3%E9%A2%98%E7%9B%AE/" class="post-title-link" itemprop="url">Promise相关题目</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-12-09 13:09:56 / 修改时间：13:17:39" itemprop="dateCreated datePublished" datetime="2021-12-09T13:09:56+08:00">2021-12-09</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Promise%E5%90%88%E9%9B%86/" itemprop="url" rel="index"><span itemprop="name">Promise合集</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="红绿灯面试题目（Promise-队列实现）"><a href="#红绿灯面试题目（Promise-队列实现）" class="headerlink" title="红绿灯面试题目（Promise, 队列实现）"></a>红绿灯面试题目（Promise, 队列实现）</h3><p>红灯三秒亮一次，黄灯1秒亮一次，绿灯2秒亮一次，，如何让三个灯不断交替重复亮灯</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">//解题</span><br><span class="line">const red = () =&gt; &#123;console.log(<span class="string">&#x27;red&#x27;</span>)&#125;;</span><br><span class="line">const green = () =&gt; &#123;console.log(<span class="string">&#x27;green&#x27;</span>)&#125;;</span><br><span class="line">const yellow = () =&gt; &#123;console.log(<span class="string">&#x27;yellow&#x27;</span>)&#125;;</span><br><span class="line"></span><br><span class="line">const light = <span class="keyword">function</span>(callback,time)&#123;</span><br><span class="line">  <span class="built_in">return</span> new Promise((resolve,reject)=&gt;&#123;</span><br><span class="line">    setTimeout(()=&gt;&#123;</span><br><span class="line">      callback();</span><br><span class="line">      resolve();</span><br><span class="line">    &#125;,time)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;;</span><br><span class="line">const step = () =&gt;&#123;</span><br><span class="line">  Promise.resolve().<span class="keyword">then</span>(()=&gt;&#123;<span class="built_in">return</span> light(red,3000)&#125;).<span class="keyword">then</span>(()=&gt;&#123;<span class="built_in">return</span> light(yellow,1000)&#125;).<span class="keyword">then</span>(()=&gt;&#123;<span class="built_in">return</span> light(green,2000)&#125;).<span class="keyword">then</span>(()=&gt;&#123;step()&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://syivsy-apep.github.io/2021/12/09/%E6%9C%80%E7%AE%80%E5%AE%9E%E7%8E%B0Promise/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Syivsy-Apep">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Syivsy-Apep的前端博客站">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/12/09/%E6%9C%80%E7%AE%80%E5%AE%9E%E7%8E%B0Promise/" class="post-title-link" itemprop="url">最简实现Promise(20行)</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-12-09 11:31:50 / 修改时间：11:58:05" itemprop="dateCreated datePublished" datetime="2021-12-09T11:31:50+08:00">2021-12-09</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Promise%E5%90%88%E9%9B%86/" itemprop="url" rel="index"><span itemprop="name">Promise合集</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="最简实现Promise，支持异步链式调用（20行）"><a href="#最简实现Promise，支持异步链式调用（20行）" class="headerlink" title="最简实现Promise，支持异步链式调用（20行）"></a>最简实现Promise，支持异步链式调用（20行）</h1><p>这个 Promise 的实现不考虑任何异常情况，只考虑代码最简短; </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">function Promise(executor)&#123;</span><br><span class="line">  this.callbacks &#x3D; [];&#x2F;&#x2F; Promise resolve时的回调函数集</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F;传递给Promise处理函数的resolve</span><br><span class="line">  &#x2F;&#x2F; 这里直接往实例上挂个data</span><br><span class="line">  &#x2F;&#x2F; 然后把callback数组里的函数依次执行一遍就可以</span><br><span class="line">  const resolve &#x3D; (value) &#x3D;&gt; &#123;</span><br><span class="line">    setTimeout(()&#x3D;&gt;&#123;</span><br><span class="line">      this.data &#x3D; value;</span><br><span class="line">      this.callbacks.forEach((cb)&#x3D;&gt;cb(value))</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  &#x2F;&#x2F; 执行用户传入的函数 </span><br><span class="line">  &#x2F;&#x2F; 并且把resolve方法交给用户执行</span><br><span class="line">  executor(resolve);</span><br><span class="line">&#125;</span><br><span class="line">Promise.prototype.then &#x3D; function (onResolved)&#123;</span><br><span class="line">  onResolved &#x3D; typeof onResolved &#x3D;&#x3D;&#x3D; &#39;function&#39; ? onResolved : function(v) &#123;return v&#125;</span><br><span class="line">  return new Promise((resolve)&#x3D;&gt;&#123;</span><br><span class="line">    this.callbacks.push(() &#x3D;&gt; &#123;</span><br><span class="line">       const res &#x3D; onResolved(this.data);</span><br><span class="line">    if (res instanceof Promise) &#123;</span><br><span class="line">        res.then(resolve);</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        resolve(res);</span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>结果:</p>
+<ol>
+<li>500ms 后输出 1</li>
+<li>500ms 后输出 2</li>
+</ol>
+<h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><blockquote>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904094079926286">最简实现Promise，支持异步链式调用</a></p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://syivsy-apep.github.io/2021/12/09/%E5%89%96%E6%9E%90Promise%E5%86%85%E9%83%A8%E7%BB%93%E6%9E%84/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -265,7 +414,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-12-09 11:22:07 / 修改时间：11:28:56" itemprop="dateCreated datePublished" datetime="2021-12-09T11:22:07+08:00">2021-12-09</time>
+              <time title="创建时间：2021-12-09 11:22:07 / 修改时间：13:03:19" itemprop="dateCreated datePublished" datetime="2021-12-09T11:22:07+08:00">2021-12-09</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -297,11 +446,11 @@
 <li>Promise 的初始状态为<code>pending</code>,它可以由此状态转换为<code>resolved</code>或者<code>rejected</code>，一旦状态确定，就不可以再次转换为其它状态，状态确定的过程称为settle；Promise必须处于<code>pending</code>,<code>resolved</code>,<code>rejected</code>三个状态之一<ul>
 <li><code>pending</code>：初始状态，完成或失败状态的前一个状态</li>
 <li><code>resolved</code>：操作成功完成, 并且有一个无法改变value</li>
-<li><code>rejected</code>：操作失败, 并且有一个无法改变的reason(一般为一个Error)<h1 id="实现一个Promise"><a href="#实现一个Promise" class="headerlink" title="实现一个Promise"></a>实现一个Promise</h1></li>
+<li><code>rejected</code>：操作失败, 并且有一个无法改变的reason(一般为一个Error)</li>
 </ul>
 </li>
 </ol>
-<h2 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h2><p>因为标准并没有指定如何构造一个Promise对象，所以我们同样以目前一般Promise实现中通用的方法来构造一个Promise对象：</p>
+<h1 id="实现一个Promise"><a href="#实现一个Promise" class="headerlink" title="实现一个Promise"></a>实现一个Promise</h1><h2 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h2><p>因为标准并没有指定如何构造一个Promise对象，所以我们同样以目前一般Promise实现中通用的方法来构造一个Promise对象：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var promise &#x3D; new Promise(function(resolve, reject) &#123;</span><br><span class="line">  &#x2F;*</span><br><span class="line">    如果操作成功，调用resolve并传入value</span><br><span class="line">    如果操作失败，调用reject并传入reason</span><br><span class="line">  *&#x2F;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
 <p>实现构造函数的框架：</p>
@@ -312,22 +461,29 @@
 
 <p>基本上就是在判断状态为pending之后把状态改为相应的值，并把对应的value和reason存在_this的data属性上面，之后执行相应的回调函数。</p>
 <h2 id="then-方法"><a href="#then-方法" class="headerlink" title="then 方法"></a><code>then</code> 方法</h2><p>Promise对象有一个 <code>then</code> 方法，用来注册在这个Promise状态确定后的回调， <code>then</code> 方法需要写在原型链上。同时 <code>then</code> 方法也会返回一个新的Promise对象; </p>
-<p>实现<code>then</code>方法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; then方法接收两个参数，onResolved，onRejected，分别为Promise成功或失败后的回调</span><br><span class="line">Promise.prototype.then &#x3D; function(onResolved,onRejected)&#123;</span><br><span class="line">  var _this &#x3D; this,promise2;</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F;如果then的参数不是function，则我们需要忽略它，此处以如下方式处理</span><br><span class="line">  onRejected &#x3D; typeof onRejected &#x3D;&#x3D;&#x3D; &#39;function&#39; ? onRejected : function(r) &#123;&#125;</span><br><span class="line">  onResolved &#x3D; typeof onResolved &#x3D;&#x3D;&#x3D; &#39;function&#39; ? onResolved : function(v) &#123;&#125;</span><br><span class="line">  </span><br><span class="line">  if(_this.status &#x3D;&#x3D; &quot;resolved&quot;)&#123;</span><br><span class="line">    return promise2 &#x3D; new Promise(function(resolve,reject)&#123;</span><br><span class="line"></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  if(_this.status &#x3D;&#x3D; &quot;rejected&quot;)&#123;</span><br><span class="line">    return promise2 &#x3D; new Promise(function(resolve,rejecet)&#123;</span><br><span class="line"></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  if(_this.status &#x3D;&#x3D; &quot;pending&quot;)&#123;</span><br><span class="line">    return promise2 &#x3D; new Promise(function(resolve,reject)&#123;</span><br><span class="line"></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>实现 <code>then</code> 方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; then方法接收两个参数，onResolved，onRejected，分别为Promise成功或失败后的回调</span><br><span class="line">Promise.prototype.then &#x3D; function(onResolved,onRejected)&#123;</span><br><span class="line">  var _this &#x3D; this.promise2;</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F;如果then的参数不是function，则我们需要忽略它，此处以如下方式处理</span><br><span class="line">  onRejected &#x3D; typeof onRejected &#x3D;&#x3D;&#x3D; &#39;function&#39; ? onRejected : function(r) &#123;&#125;</span><br><span class="line">  onResolved &#x3D; typeof onResolved &#x3D;&#x3D;&#x3D; &#39;function&#39; ? onResolved : function(v) &#123;&#125;</span><br><span class="line">  </span><br><span class="line">  if(_this.status &#x3D;&#x3D; &quot;resolved&quot;)&#123;</span><br><span class="line">    return promise2 &#x3D; new Promise(function(resolve,reject)&#123;</span><br><span class="line"></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  if(_this.status &#x3D;&#x3D; &quot;rejected&quot;)&#123;</span><br><span class="line">    return promise2 &#x3D; new Promise(function(resolve,rejecet)&#123;</span><br><span class="line"></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  if(_this.status &#x3D;&#x3D; &quot;pending&quot;)&#123;</span><br><span class="line">    return promise2 &#x3D; new Promise(function(resolve,reject)&#123;</span><br><span class="line"></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>Promise总共有三种可能的状态，分三个if块来处理，在里面分别都返回一个new Promise。<br>对于如下代码，promise2的值取决于then里面函数的返回值：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">promise2 &#x3D; promise1.then(function(value) &#123;</span><br><span class="line">  return 4</span><br><span class="line">&#125;, function(reason) &#123;</span><br><span class="line">  throw new Error(&#39;sth went wrong&#39;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
 <p>如果promise1被resolve了，promise2的将被4 resolve，如果promise1被reject了，promise2将被new Error(‘sth went wrong’) reject</p>
 <p>所以需要在then里面执行onResolved或者onRejected，并根据返回值(标准中记为x)来确定promise2的结果，并且，如果onResolved/onRejected返回的是一个Promise，promise2将直接取这个Promise的结果：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; then方法接收两个参数，onResolved，onRejected，分别为Promise成功或失败后的回调</span><br><span class="line">Promise.prototype.then &#x3D; function(onResolved,onRejected)&#123;</span><br><span class="line">  var _this &#x3D; this,promise2;</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F;如果then的参数不是function，则我们需要忽略它，此处以如下方式处理</span><br><span class="line">  onRejected &#x3D; typeof onRejected &#x3D;&#x3D;&#x3D; &#39;function&#39; ? onRejected : function(r) &#123;&#125;;</span><br><span class="line">  onResolved &#x3D; typeof onResolved &#x3D;&#x3D;&#x3D; &#39;function&#39; ? onResolved : function(v) &#123;&#125;;</span><br><span class="line">  </span><br><span class="line">  if(_this.status &#x3D;&#x3D; &quot;resolved&quot;)&#123;</span><br><span class="line">    return promise2 &#x3D; new Promise(function(resolve,reject)&#123;</span><br><span class="line">      try&#123;</span><br><span class="line">        var x &#x3D; onResolved(_this.data);</span><br><span class="line">        if(x instanceof Promise)&#123;&#x2F;&#x2F; 如果onResolved的返回值是一个Promise对象，直接取它的结果做为promise2的结果</span><br><span class="line">          x.then(resolve, reject);</span><br><span class="line">        &#125; </span><br><span class="line">        resolve(x) &#x2F;&#x2F; 否则，以它的返回值做为promise2的结果</span><br><span class="line">      &#125;catch(e)&#123;</span><br><span class="line">        reject(e);&#x2F;&#x2F; 如果出错，以捕获到的错误做为promise2的结果</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  if(_this.status &#x3D;&#x3D; &quot;rejected&quot;)&#123;</span><br><span class="line">    return promise2 &#x3D; new Promise(function(resolve,rejecet)&#123;</span><br><span class="line">      try &#123;</span><br><span class="line">        var x &#x3D; onRejected(_this.data)</span><br><span class="line">        if (x instanceof Promise) &#123;</span><br><span class="line">          x.then(resolve, reject)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125; catch (e) &#123;</span><br><span class="line">        reject(e)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  if(_this.status &#x3D;&#x3D; &quot;pending&quot;)&#123;</span><br><span class="line">    &#x2F;&#x2F; 如果当前的Promise还处于pending状态，我们并不能确定调用onResolved还是onRejected，</span><br><span class="line">    &#x2F;&#x2F; 只能等到Promise的状态确定后，才能确实如何处理。</span><br><span class="line">     &#x2F;&#x2F; 所以我们需要把我们的**两种情况**的处理逻辑做为callback放入promise1(此处即this&#x2F;_this)的回调数组里</span><br><span class="line">    return promise2 &#x3D; new Promise(function(resolve,reject)&#123;</span><br><span class="line"></span><br><span class="line">      _this.onResolvedCallback.push(function(value) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">          var x &#x3D; onResolved(_this.data)</span><br><span class="line">          if (x instanceof Promise) &#123;</span><br><span class="line">            x.then(resolve, reject)</span><br><span class="line">          &#125;</span><br><span class="line">        &#125; catch (e) &#123;</span><br><span class="line">          reject(e)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line"></span><br><span class="line">      _this.onRejectedCallback.push(function(reason) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">          var x &#x3D; onRejected(_this.data)</span><br><span class="line">          if (x instanceof Promise) &#123;</span><br><span class="line">            x.then(resolve, reject)</span><br><span class="line">          &#125;</span><br><span class="line">        &#125; catch (e) &#123;</span><br><span class="line">          reject(e)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;实现一个catch方法</span><br><span class="line">Promise.prototype.catch &#x3D; function(onRejected) &#123;</span><br><span class="line">  return this.then(null, onRejected)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h2 id="值的穿透"><a href="#值的穿透" class="headerlink" title="值的穿透"></a>值的穿透</h2><p>下面这样的代码目前也是没办法处理的：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">new Promise(resolve&#x3D;&gt;resolve(8))</span><br><span class="line">  .then()</span><br><span class="line">  .then()</span><br><span class="line">  .then(function foo(value) &#123;</span><br><span class="line">    alert(value)&#x2F;&#x2F;undefined</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
-<p>正确的行为应该是alert出8，而如果拿我们的Promise，运行上述代码，将会alert出<code>undefined</code>。这种行为称为穿透，即<code>8</code>这个值会穿透两个then(说Promise更为准确)到达最后一个then里的<code>foo函数</code>里，成为它的实参，最终将会alert出<code>8</code>。</p>
+
+<p>正确的行为应该是alert出8，而如果拿我们的Promise，运行上述代码，将会alert出 <code>undefined</code> 。这种行为称为穿透，即 <code>8</code> 这个值会穿透两个then(说Promise更为准确)到达最后一个then里的 <code>foo函数</code> 里，成为它的实参，最终将会alert出 <code>8</code> 。</p>
 <p>通过观察，会发现我们希望下面这段代码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">new Promise(resolve&#x3D;&gt;resolve(8))</span><br><span class="line">  .then()</span><br><span class="line">  .catch()</span><br><span class="line">  .then(function(value) &#123;</span><br><span class="line">    alert(value)</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+
 <p>跟下面这段代码的行为是一样的</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">new Promise(resolve&#x3D;&gt;resolve(8))</span><br><span class="line">  .then(function(value)&#123;</span><br><span class="line">    return value</span><br><span class="line">  &#125;)</span><br><span class="line">  .catch(function(reason)&#123;</span><br><span class="line">    throw reason</span><br><span class="line">  &#125;)</span><br><span class="line">  .then(function(value) &#123;</span><br><span class="line">    alert(value)</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
-<p>所以如果想要把then的实参留空且让值可以穿透到后面，意味着then的两个参数的默认值分别为<code>function(value) &#123;return value&#125;，function(reason) &#123;throw reason&#125;</code>。<br>所以我们只需要把then里判断onResolved和onRejected的部分改成如下即可：</p>
+
+<p>所以如果想要把then的实参留空且让值可以穿透到后面，意味着then的两个参数的默认值分别为 <code>function(value) &#123;return value&#125;，function(reason) &#123;throw reason&#125;</code> 。<br>所以我们只需要把then里判断onResolved和onRejected的部分改成如下即可：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">onResolved &#x3D; typeof onResolved &#x3D;&#x3D;&#x3D; &#39;function&#39; ? onResolved : function(value) &#123;return value&#125;;</span><br><span class="line">onRejected &#x3D; typeof onRejected &#x3D;&#x3D;&#x3D; &#39;function&#39; ? onRejected : function(reason) &#123;throw reason&#125;;</span><br></pre></td></tr></table></figure>
+
 <h5 id="Promise神奇的值的穿透也没有那么黑魔法，只不过是then默认参数就是把值往后传或者抛"><a href="#Promise神奇的值的穿透也没有那么黑魔法，只不过是then默认参数就是把值往后传或者抛" class="headerlink" title="Promise神奇的值的穿透也没有那么黑魔法，只不过是then默认参数就是把值往后传或者抛"></a>Promise神奇的值的穿透也没有那么黑魔法，只不过是then默认参数就是把值往后传或者抛</h5><h2 id="不同Promise的交互"><a href="#不同Promise的交互" class="headerlink" title="不同Promise的交互"></a>不同Promise的交互</h2><p>建议各位对照着标准阅读以下代码，因为标准对此说明的非常详细，所以你应该能够在任意一个Promise实现中找到类似的代码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line">resolvePromise函数即为根据x的值来决定promise2的状态的函数</span><br><span class="line">也即标准中的[Promise Resolution Procedure](https:&#x2F;&#x2F;promisesaplus.com&#x2F;#point-47)</span><br><span class="line">x为&#96;promise2 &#x3D; promise1.then(onResolved, onRejected)&#96;里&#96;onResolved&#x2F;onRejected&#96;的返回值</span><br><span class="line">&#96;resolve&#96;和&#96;reject&#96;实际上是&#96;promise2&#96;的&#96;executor&#96;的两个实参，因为很难挂在其它的地方，所以一并传进来。</span><br><span class="line">相信各位一定可以对照标准把标准转换成代码，这里就只标出代码在标准中对应的位置，只在必要的地方做一些解释</span><br><span class="line">*&#x2F;</span><br><span class="line">function resolvePromise(promise2, x, resolve, reject) &#123;</span><br><span class="line">  var then</span><br><span class="line">  var thenCalledOrThrow &#x3D; false</span><br><span class="line"></span><br><span class="line">  if (promise2 &#x3D;&#x3D;&#x3D; x) &#123; &#x2F;&#x2F; 对应标准2.3.1节</span><br><span class="line">    return reject(new TypeError(&#39;Chaining cycle detected for promise!&#39;))</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  if (x instanceof Promise) &#123; &#x2F;&#x2F; 对应标准2.3.2节</span><br><span class="line">    &#x2F;&#x2F; 如果x的状态还没有确定，那么它是有可能被一个thenable决定最终状态和值的</span><br><span class="line">    &#x2F;&#x2F; 所以这里需要做一下处理，而不能一概的以为它会被一个“正常”的值resolve</span><br><span class="line">    if (x.status &#x3D;&#x3D;&#x3D; &#39;pending&#39;) &#123;</span><br><span class="line">      x.then(function(value) &#123;</span><br><span class="line">        resolvePromise(promise2, value, resolve, reject)</span><br><span class="line">      &#125;, reject)</span><br><span class="line">    &#125; else &#123; &#x2F;&#x2F; 但如果这个Promise的状态已经确定了，那么它肯定有一个“正常”的值，而不是一个thenable，所以这里直接取它的状态</span><br><span class="line">      x.then(resolve, reject)</span><br><span class="line">    &#125;</span><br><span class="line">    return</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  if ((x !&#x3D;&#x3D; null) &amp;&amp; ((typeof x &#x3D;&#x3D;&#x3D; &#39;object&#39;) || (typeof x &#x3D;&#x3D;&#x3D; &#39;function&#39;))) &#123; &#x2F;&#x2F; 2.3.3</span><br><span class="line">    try &#123;</span><br><span class="line"></span><br><span class="line">      &#x2F;&#x2F; 2.3.3.1 因为x.then有可能是一个getter，这种情况下多次读取就有可能产生副作用</span><br><span class="line">      &#x2F;&#x2F; 即要判断它的类型，又要调用它，这就是两次读取</span><br><span class="line">      then &#x3D; x.then </span><br><span class="line">      if (typeof then &#x3D;&#x3D;&#x3D; &#39;function&#39;) &#123; &#x2F;&#x2F; 2.3.3.3</span><br><span class="line">        then.call(x, function rs(y) &#123; &#x2F;&#x2F; 2.3.3.3.1</span><br><span class="line">          if (thenCalledOrThrow) return &#x2F;&#x2F; 2.3.3.3.3 即这三处谁选执行就以谁的结果为准</span><br><span class="line">          thenCalledOrThrow &#x3D; true</span><br><span class="line">          return resolvePromise(promise2, y, resolve, reject) &#x2F;&#x2F; 2.3.3.3.1</span><br><span class="line">        &#125;, function rj(r) &#123; &#x2F;&#x2F; 2.3.3.3.2</span><br><span class="line">          if (thenCalledOrThrow) return &#x2F;&#x2F; 2.3.3.3.3 即这三处谁选执行就以谁的结果为准</span><br><span class="line">          thenCalledOrThrow &#x3D; true</span><br><span class="line">          return reject(r)</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125; else &#123; &#x2F;&#x2F; 2.3.3.4</span><br><span class="line">        resolve(x)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; catch (e) &#123; &#x2F;&#x2F; 2.3.3.2</span><br><span class="line">      if (thenCalledOrThrow) return &#x2F;&#x2F; 2.3.3.3.3 即这三处谁选执行就以谁的结果为准</span><br><span class="line">      thenCalledOrThrow &#x3D; true</span><br><span class="line">      return reject(e)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; else &#123; &#x2F;&#x2F; 2.3.4</span><br><span class="line">    resolve(x)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
