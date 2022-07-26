@@ -189,14 +189,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-count">11</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -233,6 +233,413 @@
       
 
       
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://syivsy-apep.github.io/2022/07/25/%E5%B8%B8%E7%94%A8JavaScript%E5%B7%A5%E5%85%B7%E5%87%BD%E6%95%B0%E6%95%B4%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Syivsy-Apep">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Syivsy-Apep的前端博客站">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/07/25/%E5%B8%B8%E7%94%A8JavaScript%E5%B7%A5%E5%85%B7%E5%87%BD%E6%95%B0%E6%95%B4%E7%90%86/" class="post-title-link" itemprop="url">常用JavaScript工具函数整理</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-07-25 11:59:23" itemprop="dateCreated datePublished" datetime="2022-07-25T11:59:23+08:00">2022-07-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-07-26 11:27:16" itemprop="dateModified" datetime="2022-07-26T11:27:16+08:00">2022-07-26</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="1-数组"><a href="#1-数组" class="headerlink" title="1.数组"></a>1.数组</h2><h3 id="1-1-扁平化多元数组或树结构"><a href="#1-1-扁平化多元数组或树结构" class="headerlink" title="1.1 扁平化多元数组或树结构"></a>1.1 扁平化多元数组或树结构</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;扁平化树结构数据</span><br><span class="line">const deepFlatten &#x3D; arr &#x3D;&gt; [].concat(...arr.map(v &#x3D;&gt; Array.isArray(v.children) ? [v].concat(...deepFlatten(v.children)) : v));</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;扁平化多元数组</span><br><span class="line">const deepFlatten &#x3D; arr &#x3D;&gt; [].concat(...arr.map(v &#x3D;&gt; (Array.isArray(v) ? deepFlatten(v) : v)));</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 指定深度</span><br><span class="line">const flatten &#x3D; (arr, depth &#x3D; 1) &#x3D;&gt; arr.reduce((a, v) &#x3D;&gt; a.concat(depth &gt; 1 &amp;&amp; Array.isArray(v) ? flatten(v, depth - 1) : v), []);</span><br><span class="line"></span><br><span class="line">flatten([1, [2], 3, 4]); &#x2F;&#x2F; [1, 2, 3, 4]</span><br><span class="line">flatten([1, [2, [3, [4, 5], 6], 7], 8], 2); &#x2F;&#x2F; [1, 2, 3, [4, 5], 6, 7, 8]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="1-2-约等于"><a href="#1-2-约等于" class="headerlink" title="1.2 约等于"></a>1.2 约等于</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const approximatelyEqual &#x3D; (v1, v2, epsilon &#x3D; 0.001) &#x3D;&gt; Math.abs(v1 - v2) &lt; epsilon;</span><br><span class="line"></span><br><span class="line">approximatelyEqual(Math.PI &#x2F; 2.0, 1.5708); &#x2F;&#x2F; true</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-3-平均数"><a href="#1-3-平均数" class="headerlink" title="1.3 平均数"></a>1.3 平均数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const average &#x3D; (...nums) &#x3D;&gt; nums.reduce((acc, val) &#x3D;&gt; acc + val, 0) &#x2F; nums.length;</span><br><span class="line">average(...[1, 2, 3]); &#x2F;&#x2F; 2</span><br><span class="line">average(1, 2, 3); &#x2F;&#x2F; 2</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-4-拆分断言后的数组"><a href="#1-4-拆分断言后的数组" class="headerlink" title="1.4 拆分断言后的数组"></a>1.4 拆分断言后的数组</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const bifurcate &#x3D; (arr, filter) &#x3D;&gt;</span><br><span class="line">  arr.reduce((acc, val, i) &#x3D;&gt; (acc[filter[i] ? 0 : 1].push(val), acc), [[], []]);</span><br><span class="line">bifurcate([&#39;beep&#39;, &#39;boop&#39;, &#39;foo&#39;, &#39;bar&#39;], [true, true, false, true]); </span><br><span class="line">&#x2F;&#x2F; [ [&#39;beep&#39;, &#39;boop&#39;, &#39;bar&#39;], [&#39;foo&#39;] ]</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-5-去除数组中的无效-无用值"><a href="#1-5-去除数组中的无效-无用值" class="headerlink" title="1.5 去除数组中的无效/无用值"></a>1.5 去除数组中的无效/无用值</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const compact &#x3D; arr &#x3D;&gt; arr.filter(Boolean);</span><br><span class="line"></span><br><span class="line">compact([0, 1, false, 2, &#39;&#39;, 3, &#39;a&#39;, &#39;e&#39; * 23, NaN, &#39;s&#39;, 34]); </span><br><span class="line">&#x2F;&#x2F; [ 1, 2, 3, &#39;a&#39;, &#39;s&#39;, 34 ]</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-6-检测数值出现次数"><a href="#1-6-检测数值出现次数" class="headerlink" title="1.6 检测数值出现次数"></a>1.6 检测数值出现次数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const countOccurrences &#x3D; (arr, val) &#x3D;&gt; arr.reduce((a, v) &#x3D;&gt; (v &#x3D;&#x3D;&#x3D; val ? a + 1 : a), 0);</span><br><span class="line">countOccurrences([1, 1, 2, 1, 2, 3], 1); &#x2F;&#x2F; 3</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-7-寻找差异"><a href="#1-7-寻找差异" class="headerlink" title="1.7 寻找差异"></a>1.7 寻找差异</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const difference &#x3D; (a, b) &#x3D;&gt; &#123;</span><br><span class="line">  const s &#x3D; new Set(b);</span><br><span class="line">  return a.filter(x &#x3D;&gt; !s.has(x));</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">difference([1, 2, 3], [1, 2, 4]); &#x2F;&#x2F; [3]</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-8-返回数组中某值的所有索引"><a href="#1-8-返回数组中某值的所有索引" class="headerlink" title="1.8 返回数组中某值的所有索引"></a>1.8 返回数组中某值的所有索引</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;此代码段可用于获取数组中某个值的所有索引，如果此值中未包含该值，则返回一个空数组。</span><br><span class="line">const indexOfAll &#x3D; (arr, val) &#x3D;&gt; arr.reduce((acc, el, i) &#x3D;&gt; (el &#x3D;&#x3D;&#x3D; val ? [...acc, i] : acc), []);</span><br><span class="line"></span><br><span class="line">indexOfAll([1, 2, 3, 1, 2, 3], 1); &#x2F;&#x2F; [0,3]</span><br><span class="line">indexOfAll([1, 2, 3], 4); &#x2F;&#x2F; []</span><br><span class="line">&#96;&#96;&#96; </span><br><span class="line"></span><br><span class="line">### 1.9 两数组的交集</span><br></pre></td></tr></table></figure>
+<p>const intersection = (a, b) =&gt; {const s = new Set(b);return a.filter(x =&gt; s.has(x));};</p>
+<p>intersection([1, 2, 3], [4, 3, 2]); // [2, 3]</p>
+<p>//两数组都符合条件的交集<br>const intersectionBy = (a, b, fn) =&gt; {<br>  const s = new Set(b.map(fn));<br>  return a.filter(x =&gt; s.has(fn(x)));<br>};</p>
+<p>intersectionBy([2.1, 1.2], [2.3, 3.4], Math.floor); // [2.1]</p>
+<p>//先比较后返回交集</p>
+<p>const intersectionWith = (a, b, comp) =&gt; a.filter(x =&gt; b.findIndex(y =&gt; comp(x, y)) !== -1);</p>
+<p>intersectionWith([1, 1.2, 1.5, 3, 0], [1.9, 3, 0, 3.9], (a, b) =&gt; Math.round(a) === Math.round(b)); // [1.5, 3, 0]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 1.10 在指定数组中获取随机数</span><br></pre></td></tr></table></figure>
+<p>const sample = arr =&gt; arr[Math.floor(Math.random() * arr.length)];</p>
+<p>sample([3, 7, 9, 11]); // 9</p>
+<p>//在指定数组中获取指定长度的随机数(Fisher-Yates算法)<br>const sampleSize = ([…arr], n = 1) =&gt; {<br>  let m = arr.length;<br>  while (m) {<br>    const i = Math.floor(Math.random() * m–);<br>    [arr[m], arr[i]] = [arr[i], arr[m]];<br>  }<br>  return arr.slice(0, n);<br>};</p>
+<p>sampleSize([1, 2, 3], 2); // [3,1]<br>sampleSize([1, 2, 3], 4); // [2,3,1]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 1.11 随机排序数组的元素</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>const shuffle = ([…arr]) =&gt; {<br>  let m = arr.length;<br>  while (m) {<br>    const i = Math.floor(Math.random() * m–);<br>    [arr[m], arr[i]] = [arr[i], arr[m]];<br>  }<br>  return arr;<br>};</p>
+<p>const foo = [1, 2, 3];<br>shuffle(foo); // [2, 3, 1], foo = [1, 2, 3]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 1.12 根据&#96;parent_id&#96;生成树结构</span><br></pre></td></tr></table></figure>
+<p>const nest = (items, id = null, link = ‘parent_id’) =&gt;  items.filter(item =&gt; item[link] === id).map(item =&gt; ({ …item, children: nest(items, item.id) }));</p>
+<p>const comments = [<br>  { id: 1, parent_id: null },<br>  { id: 2, parent_id: 1 },<br>  { id: 3, parent_id: 1 },<br>  { id: 4, parent_id: 2 },<br>  { id: 5, parent_id: 4 }<br>];<br>const nestedComments = nest(comments); // [{ id: 1, parent_id: null, children: […] }]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 2.函数</span><br><span class="line"></span><br><span class="line">### 2.1 捕获函数运行异常</span><br></pre></td></tr></table></figure>
+<p>onst attempt = (fn, …args) =&gt; {<br>  try {<br>    return fn(…args);<br>  } catch (e) {<br>    return e instanceof Error ? e : new Error(e);<br>  }<br>};<br>var elements = attempt(function(selector) {<br>  return document.querySelectorAll(selector);<br>}, ‘&gt;_&gt;’);<br>if (elements instanceof Error) elements = []; // elements = []</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 2.2 推迟执行</span><br></pre></td></tr></table></figure>
+<p>//此代码段延迟了函数的执行，直到清除了当前调用堆栈。</p>
+<p>const defer = (fn, …args) =&gt; setTimeout(fn, 1, …args);</p>
+<p>defer(console.log, ‘a’), console.log(‘b’); // logs ‘b’ then ‘a’</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 2.3 运行多个&#96;Promises&#96;</span><br></pre></td></tr></table></figure>
+<p>const runPromisesInSeries = ps =&gt; ps.reduce((p, next) =&gt; p.then(next), Promise.resolve());<br>const delay = d =&gt; new Promise(r =&gt; setTimeout(r, d));</p>
+<p>runPromisesInSeries([() =&gt; delay(1000), () =&gt; delay(2000)]);<br>//依次执行每个Promises ，总共需要3秒钟才能完成</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 2.4 计算函数执行时间</span><br></pre></td></tr></table></figure>
+<p>const timeTaken = callback =&gt; {<br>  console.time(‘timeTaken’);<br>  const r = callback();<br>  console.timeEnd(‘timeTaken’);<br>  return r;<br>};</p>
+<p>timeTaken(() =&gt; Math.pow(2, 10)); // 1024, (logged): timeTaken: 0.02099609375ms</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 2.5 简单的发布&#x2F;订阅模式</span><br></pre></td></tr></table></figure>
+<p>创建一个发布/订阅（发布-订阅）事件集线，有emit，on和off方法。<br>1.使用Object.create(null)创建一个空的hub对象。<br>2.emit，根据event参数解析处理程序数组，然后.forEach()通过传入数据作为参数来运行每个处理程序。<br>3.on，为事件创建一个数组（若不存在则为空数组），然后.push()将处理程序添加到该数组。<br>4.off，用.findIndex()在事件数组中查找处理程序的索引，并使用.splice()删除。</p>
+<p>const createEventHub = () =&gt; ({<br>  hub: Object.create(null),<br>  emit(event, data) {<br>    (this.hub[event] || []).forEach(handler =&gt; handler(data));<br>  },<br>  on(event, handler) {<br>    if (!this.hub[event]) this.hub[event] = [];<br>    this.hub[event].push(handler);<br>  },<br>  off(event, handler) {<br>    const i = (this.hub[event] || []).findIndex(h =&gt; h === handler);<br>    if (i &gt; -1) this.hub[event].splice(i, 1);<br>    if (this.hub[event].length === 0) delete this.hub[event];<br>  }<br>});</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#96;&#96;&#96;</span><br><span class="line">用法：</span><br><span class="line">const handler &#x3D; data &#x3D;&gt; console.log(data);</span><br><span class="line">const hub &#x3D; createEventHub();</span><br><span class="line">let increment &#x3D; 0;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 订阅，监听不同事件</span><br><span class="line">hub.on(&#39;message&#39;, handler);</span><br><span class="line">hub.on(&#39;message&#39;, () &#x3D;&gt; console.log(&#39;Message event fired&#39;));</span><br><span class="line">hub.on(&#39;increment&#39;, () &#x3D;&gt; increment++);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 发布：发出事件以调用所有订阅给它们的处理程序，并将数据作为参数传递给它们</span><br><span class="line">hub.emit(&#39;message&#39;, &#39;hello world&#39;); &#x2F;&#x2F; 打印 &#39;hello world&#39; 和 &#39;Message event fired&#39;</span><br><span class="line">hub.emit(&#39;message&#39;, &#123; hello: &#39;world&#39; &#125;); &#x2F;&#x2F; 打印 对象 和 &#39;Message event fired&#39;</span><br><span class="line">hub.emit(&#39;increment&#39;); &#x2F;&#x2F; increment &#x3D; 1</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 停止订阅</span><br><span class="line">hub.off(&#39;message&#39;, handler);</span><br></pre></td></tr></table></figure>
+<h3 id="2-6-缓存函数"><a href="#2-6-缓存函数" class="headerlink" title="2.6 缓存函数"></a>2.6 缓存函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">通过实例化一个Map对象来创建一个空的缓存。</span><br><span class="line">通过检查输入值的函数输出是否已缓存，返回存储一个参数的函数，该参数将被提供给已记忆的函数；如果没有，则存储并返回它。</span><br><span class="line"></span><br><span class="line">const memoize &#x3D; fn &#x3D;&gt; &#123;</span><br><span class="line">  const cache &#x3D; new Map();</span><br><span class="line">  const cached &#x3D; function(val) &#123;</span><br><span class="line">    return cache.has(val) ? cache.get(val) : cache.set(val, fn.call(this, val)) &amp;&amp; cache.get(val);</span><br><span class="line">  &#125;;</span><br><span class="line">  cached.cache &#x3D; cache;</span><br><span class="line">  return cached;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;vue 源码版</span><br><span class="line">&#x2F;**</span><br><span class="line"> * Create a cached version of a pure function. </span><br><span class="line"> *&#x2F;</span><br><span class="line">export function cached&lt;F: Function&gt; (fn: F): F &#123;&#x2F;&#x2F;推断类型函数</span><br><span class="line">  const cache &#x3D; Object.create(null)</span><br><span class="line">  return (function cachedFn (str: string) &#123;</span><br><span class="line">    const hit &#x3D; cache[str]</span><br><span class="line">    return hit || (cache[str] &#x3D; fn(str))</span><br><span class="line">  &#125;: any)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-7-只调用一次的函数"><a href="#2-7-只调用一次的函数" class="headerlink" title="2.7 只调用一次的函数"></a>2.7 只调用一次的函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const once &#x3D; fn &#x3D;&gt; &#123;</span><br><span class="line">  let called &#x3D; false</span><br><span class="line">  return function () &#123;</span><br><span class="line">    if (!called) &#123;</span><br><span class="line">      called &#x3D; true</span><br><span class="line">      fn.apply(this, arguments)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-8-以键的路径扁平化对象"><a href="#2-8-以键的路径扁平化对象" class="headerlink" title="2.8 以键的路径扁平化对象"></a>2.8 以键的路径扁平化对象</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">使用递归。</span><br><span class="line">1.利用Object.keys(obj)联合Array.prototype.reduce()，以每片叶子节点转换为扁平的路径节点。</span><br><span class="line">2.如果键的值是一个对象，则函数使用调用适当的自身prefix以创建路径Object.assign()。</span><br><span class="line">3.否则，它将适当的前缀键值对添加到累加器对象。</span><br><span class="line">4.prefix除非您希望每个键都有一个前缀，否则应始终省略第二个参数。</span><br><span class="line"></span><br><span class="line">const flattenObject &#x3D; (obj, prefix &#x3D; &#39;&#39;) &#x3D;&gt;</span><br><span class="line">  Object.keys(obj).reduce((acc, k) &#x3D;&gt; &#123;</span><br><span class="line">    const pre &#x3D; prefix.length ? prefix + &#39;.&#39; : &#39;&#39;;</span><br><span class="line">    if (typeof obj[k] &#x3D;&#x3D;&#x3D; &#39;object&#39;) Object.assign(acc, flattenObject(obj[k], pre + k));</span><br><span class="line">    else acc[pre + k] &#x3D; obj[k];</span><br><span class="line">    return acc;</span><br><span class="line">  &#125;, &#123;&#125;);</span><br><span class="line"></span><br><span class="line">flattenObject(&#123; a: &#123; b: &#123; c: 1 &#125; &#125;, d: 1 &#125;); &#x2F;&#x2F; &#123; &#39;a.b.c&#39;: 1, d: 1 &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">以键的路径展开对象</span><br><span class="line">const unflattenObject &#x3D; obj &#x3D;&gt;</span><br><span class="line">  Object.keys(obj).reduce((acc, k) &#x3D;&gt; &#123;</span><br><span class="line">    if (k.indexOf(&#39;.&#39;) !&#x3D;&#x3D; -1) &#123;</span><br><span class="line">      const keys &#x3D; k.split(&#39;.&#39;);</span><br><span class="line">      Object.assign(</span><br><span class="line">        acc,</span><br><span class="line">        JSON.parse(</span><br><span class="line">          &#39;&#123;&#39; +</span><br><span class="line">            keys.map((v, i) &#x3D;&gt; (i !&#x3D;&#x3D; keys.length - 1 ? &#96;&quot;$&#123;v&#125;&quot;:&#123;&#96; : &#96;&quot;$&#123;v&#125;&quot;:&#96;)).join(&#39;&#39;) +</span><br><span class="line">            obj[k] +</span><br><span class="line">            &#39;&#125;&#39;.repeat(keys.length)</span><br><span class="line">        )</span><br><span class="line">      );</span><br><span class="line">    &#125; else acc[k] &#x3D; obj[k];</span><br><span class="line">    return acc;</span><br><span class="line">  &#125;, &#123;&#125;);</span><br><span class="line"></span><br><span class="line">unflattenObject(&#123; &#39;a.b.c&#39;: 1, d: 1 &#125;); &#x2F;&#x2F; &#123; a: &#123; b: &#123; c: 1 &#125; &#125;, d: 1 &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3-字符串"><a href="#3-字符串" class="headerlink" title="3.字符串"></a>3.字符串</h2><h3 id="3-1-返回字符串的字节长度"><a href="#3-1-返回字符串的字节长度" class="headerlink" title="3.1 返回字符串的字节长度"></a>3.1 返回字符串的字节长度</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const byteSize &#x3D; str &#x3D;&gt; new Blob([str]).size;</span><br><span class="line"></span><br><span class="line">byteSize(&#39;😀&#39;); &#x2F;&#x2F; 4</span><br><span class="line">byteSize(&#39;Hello World&#39;); &#x2F;&#x2F; 11</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-首字母大写小写"><a href="#3-2-首字母大写小写" class="headerlink" title="3.2 首字母大写小写"></a>3.2 首字母大写小写</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const capitalize &#x3D; ([first, ...rest]) &#x3D;&gt; first.toUpperCase() + rest.join(&#39;&#39;);</span><br><span class="line"></span><br><span class="line">capitalize(&#39;fooBar&#39;); &#x2F;&#x2F; &#39;FooBar&#39;</span><br><span class="line">capitalize(&#39;fooBar&#39;, true); &#x2F;&#x2F; &#39;Foobar&#39;</span><br><span class="line"></span><br><span class="line">const decapitalize &#x3D; ([first, ...rest]) &#x3D;&gt; first.toLowerCase() + rest.join(&#39;&#39;)</span><br><span class="line"></span><br><span class="line">decapitalize(&#39;FooBar&#39;); &#x2F;&#x2F; &#39;fooBar&#39;</span><br><span class="line">decapitalize(&#39;FooBar&#39;); &#x2F;&#x2F; &#39;fooBar&#39;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-3-每个单词首字母大写小写"><a href="#3-3-每个单词首字母大写小写" class="headerlink" title="3.3 每个单词首字母大写小写"></a>3.3 每个单词首字母大写小写</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const capitalizeEveryWord &#x3D; str &#x3D;&gt; str.replace(&#x2F;\b[a-z]&#x2F;g, char &#x3D;&gt; char.toUpperCase());</span><br><span class="line">capitalizeEveryWord(&#39;hello world!&#39;); &#x2F;&#x2F; &#39;Hello World!&#39;</span><br><span class="line"></span><br><span class="line">const capitalizeEveryWord &#x3D; str &#x3D;&gt; str.replace(&#x2F;\b[a-z]&#x2F;g, char &#x3D;&gt; char.toLowerCase());</span><br><span class="line">capitalizeEveryWord(&#39;Hello World!&#39;); &#x2F;&#x2F; &#39;hello world!&#39;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-4-删除字符串中的HTMl标签"><a href="#3-4-删除字符串中的HTMl标签" class="headerlink" title="3.4 删除字符串中的HTMl标签"></a>3.4 删除字符串中的<code>HTMl</code>标签</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const stripHTMLTags &#x3D; str &#x3D;&gt; str.replace(&#x2F;&lt;[^&gt;]*&gt;&#x2F;g, &#39;&#39;);</span><br><span class="line"></span><br><span class="line">stripHTMLTags(&#39;&lt;p&gt;&lt;em&gt;lorem&lt;&#x2F;em&gt; &lt;strong&gt;ipsum&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;&#39;); &#x2F;&#x2F; &#39;lorem ipsum&#39;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-对象"><a href="#4-对象" class="headerlink" title="4.对象"></a>4.对象</h3><h3 id="4-1-当前日期天数"><a href="#4-1-当前日期天数" class="headerlink" title="4.1 当前日期天数"></a>4.1 当前日期天数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const dayOfYear &#x3D; date &#x3D;&gt; Math.floor((date - new Date(date.getFullYear(), 0, 0)) &#x2F; 1000 &#x2F; 60 &#x2F; 60 &#x2F; 24);</span><br><span class="line"></span><br><span class="line">dayOfYear(new Date()); &#x2F;&#x2F; 285</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-2-迭代属性并执行回调"><a href="#4-2-迭代属性并执行回调" class="headerlink" title="4.2 迭代属性并执行回调"></a>4.2 迭代属性并执行回调</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const forOwn &#x3D; (obj, fn) &#x3D;&gt; Object.keys(obj).forEach(key &#x3D;&gt; fn(obj[key], key, obj));</span><br><span class="line">forOwn(&#123; foo: &#39;bar&#39;, a: 1 &#125;, v &#x3D;&gt; console.log(v)); &#x2F;&#x2F; &#39;bar&#39;, 1</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-3-返回当前24小时制时间的字符串"><a href="#4-3-返回当前24小时制时间的字符串" class="headerlink" title="4.3 返回当前24小时制时间的字符串"></a>4.3 返回当前24小时制时间的字符串</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const getColonTimeFromDate &#x3D; date &#x3D;&gt; date.toTimeString().slice(0, 8);</span><br><span class="line"></span><br><span class="line">getColonTimeFromDate(new Date()); &#x2F;&#x2F; &quot;08:38:00&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-4-返回日期间的天数"><a href="#4-4-返回日期间的天数" class="headerlink" title="4.4 返回日期间的天数"></a>4.4 返回日期间的天数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const getDaysDiffBetweenDates &#x3D; (dateInitial, dateFinal) &#x3D;&gt;  (dateFinal - dateInitial) &#x2F; (1000 * 3600 * 24);</span><br><span class="line"></span><br><span class="line">getDaysDiffBetweenDates(new Date(&#39;2019-01-01&#39;), new Date(&#39;2019-10-14&#39;)); &#x2F;&#x2F; 286</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-5-全等判断"><a href="#4-5-全等判断" class="headerlink" title="4.5 全等判断"></a>4.5 全等判断</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;在两个变量之间进行深度比较以确定它们是否全等。 </span><br><span class="line">&#x2F;&#x2F;此代码段精简的核心在于Array.prototype.every()的使用。</span><br><span class="line"></span><br><span class="line">const isAfterDate &#x3D; (dateA, dateB) &#x3D;&gt; dateA &gt; dateB;</span><br><span class="line">const equals &#x3D; (a, b) &#x3D;&gt; &#123;</span><br><span class="line">  if (a &#x3D;&#x3D;&#x3D; b) return true;</span><br><span class="line">  if (a instanceof Date &amp;&amp; b instanceof Date) return a.getTime() &#x3D;&#x3D;&#x3D; b.getTime();</span><br><span class="line">  if (!a || !b || (typeof a !&#x3D;&#x3D; &#39;object&#39; &amp;&amp; typeof b !&#x3D;&#x3D; &#39;object&#39;)) return a &#x3D;&#x3D;&#x3D; b;</span><br><span class="line">  if (a.prototype !&#x3D;&#x3D; b.prototype) return false;</span><br><span class="line">  let keys &#x3D; Object.keys(a);</span><br><span class="line">  if (keys.length !&#x3D;&#x3D; Object.keys(b).length) return false;</span><br><span class="line">  return keys.every(k &#x3D;&gt; equals(a[k], b[k]));</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">equals(&#123; a: [2, &#123; e: 3 &#125;], b: [4], c: &#39;foo&#39; &#125;, &#123; a: [2, &#123; e: 3 &#125;], b: [4], c: &#39;foo&#39; &#125;); &#x2F;&#x2F; true</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-数字"><a href="#5-数字" class="headerlink" title="5.数字"></a>5.数字</h2><h3 id="5-1-生成指定范围的随机整数"><a href="#5-1-生成指定范围的随机整数" class="headerlink" title="5.1 生成指定范围的随机整数"></a>5.1 生成指定范围的随机整数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const randomIntegerInRange &#x3D; (min, max) &#x3D;&gt; Math.floor(Math.random() * (max - min + 1)) + min;</span><br><span class="line"></span><br><span class="line">randomIntegerInRange(0, 5); &#x2F;&#x2F; 3</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-2-四舍五入到指定位数"><a href="#5-2-四舍五入到指定位数" class="headerlink" title="5.2 四舍五入到指定位数"></a>5.2 四舍五入到指定位数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const round &#x3D; (n, decimals &#x3D; 0) &#x3D;&gt; Number(&#96;$&#123;Math.round(&#96;$&#123;n&#125;e$&#123;decimals&#125;&#96;)&#125;e-$&#123;decimals&#125;&#96;);</span><br><span class="line"></span><br><span class="line">round(1.005, 2); &#x2F;&#x2F; 1.01</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-浏览器操作及其它"><a href="#6-浏览器操作及其它" class="headerlink" title="6.浏览器操作及其它"></a>6.浏览器操作及其它</h2><h3 id="6-1-返回指定元素的生效样式"><a href="#6-1-返回指定元素的生效样式" class="headerlink" title="6.1 返回指定元素的生效样式"></a>6.1 返回指定元素的生效样式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const getStyle &#x3D; (el, ruleName) &#x3D;&gt; getComputedStyle(el)[ruleName];</span><br><span class="line"></span><br><span class="line">getStyle(document.querySelector(&#39;p&#39;), &#39;font-size&#39;); &#x2F;&#x2F; &#39;16px&#39;</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-2-检查当前标签页是否活动"><a href="#6-2-检查当前标签页是否活动" class="headerlink" title="6.2 检查当前标签页是否活动"></a>6.2 检查当前标签页是否活动</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const isBrowserTabFocused &#x3D; () &#x3D;&gt; !document.hidden;</span><br><span class="line"></span><br><span class="line">isBrowserTabFocused(); &#x2F;&#x2F; true</span><br></pre></td></tr></table></figure>
+<h3 id="6-3-平滑滚动至顶部"><a href="#6-3-平滑滚动至顶部" class="headerlink" title="6.3 平滑滚动至顶部"></a>6.3 平滑滚动至顶部</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const scrollToTop &#x3D; () &#x3D;&gt; &#123;</span><br><span class="line">  const c &#x3D; document.documentElement.scrollTop || document.body.scrollTop;</span><br><span class="line">  if (c &gt; 0) &#123;</span><br><span class="line">    window.requestAnimationFrame(scrollToTop);</span><br><span class="line">    window.scrollTo(0, c - c &#x2F; 8);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">scrollToTop();</span><br></pre></td></tr></table></figure>
+<h3 id="6-4-滚动到指定元素区域"><a href="#6-4-滚动到指定元素区域" class="headerlink" title="6.4 滚动到指定元素区域"></a>6.4 滚动到指定元素区域</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const smoothScroll &#x3D; element &#x3D;&gt;</span><br><span class="line">  document.querySelector(element).scrollIntoView(&#123;</span><br><span class="line">    behavior: &#39;smooth&#39;</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">smoothScroll(&#39;#fooBar&#39;); </span><br><span class="line">smoothScroll(&#39;.fooBar&#39;); </span><br></pre></td></tr></table></figure>
+
+<h3 id="6-5-检测移动-PC设备"><a href="#6-5-检测移动-PC设备" class="headerlink" title="6.5 检测移动/PC设备"></a>6.5 检测移动/PC设备</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const detectDeviceType &#x3D; () &#x3D;&gt;</span><br><span class="line">  &#x2F;Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini&#x2F;i.test(navigator.userAgent)</span><br><span class="line">    ? &#39;Mobile&#39;</span><br><span class="line">    : &#39;Desktop&#39;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-6-escapeHTML：转义HTML-防XSS攻击"><a href="#6-6-escapeHTML：转义HTML-防XSS攻击" class="headerlink" title="6.6 escapeHTML：转义HTML(防XSS攻击)"></a>6.6 <code>escapeHTML</code>：转义<code>HTML</code>(防XSS攻击)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">const escapeHTML &#x3D; str &#x3D;&gt;</span><br><span class="line">  str.replace(</span><br><span class="line">    &#x2F;[&amp;&lt;&gt;&#39;&quot;]&#x2F;g,</span><br><span class="line">    tag &#x3D;&gt;</span><br><span class="line">      (&#123;</span><br><span class="line">        &#39;&amp;&#39;: &#39;&amp;&#39;,</span><br><span class="line">        &#39;&lt;&#39;: &#39;&lt;&#39;,</span><br><span class="line">        &#39;&gt;&#39;: &#39;&gt;&#39;,</span><br><span class="line">        &quot;&#39;&quot;: &#39;&#39;&#39;,</span><br><span class="line">        &#39;&quot;&#39;: &#39;&quot;&#39;</span><br><span class="line">      &#125;[tag] || tag)</span><br><span class="line">  );</span><br><span class="line"></span><br><span class="line">escapeHTML(&#39;&lt;a href&#x3D;&quot;#&quot;&gt;Me &amp; you&lt;&#x2F;a&gt;&#39;); &#x2F;&#x2F; &#39;&lt;a href&#x3D;&quot;#&quot;&gt;Me &amp; you&lt;&#x2F;a&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://syivsy-apep.github.io/2022/05/14/%E6%AF%94%E5%AF%B9%E7%BB%8F%E7%BA%AC%E5%BA%A6%E6%98%AF%E5%90%A6%E5%9C%A8%E8%8C%83%E5%9B%B4%E5%86%85/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Syivsy-Apep">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Syivsy-Apep的前端博客站">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/05/14/%E6%AF%94%E5%AF%B9%E7%BB%8F%E7%BA%AC%E5%BA%A6%E6%98%AF%E5%90%A6%E5%9C%A8%E8%8C%83%E5%9B%B4%E5%86%85/" class="post-title-link" itemprop="url">比对经纬度是否在范围内</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-05-14 13:09:56" itemprop="dateCreated datePublished" datetime="2022-05-14T13:09:56+08:00">2022-05-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-07-25 11:58:36" itemprop="dateModified" datetime="2022-07-25T11:58:36+08:00">2022-07-25</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="比对经纬度是否在范围内"><a href="#比对经纬度是否在范围内" class="headerlink" title="比对经纬度是否在范围内"></a>比对经纬度是否在范围内</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">var isPointInPolygon = <span class="keyword">function</span>(point,pts)&#123;</span><br><span class="line">    var N = pts.length;  //pts [&#123;lat:xxx,lng:xxx&#125;,&#123;lat:xxx,lng:xxx&#125;]</span><br><span class="line">    var boundOrVertex = <span class="literal">true</span>; //如果点位于多边形的顶点或边上，也算做点在多边形内，直接返回<span class="literal">true</span></span><br><span class="line">    var intersectCount = 0;</span><br><span class="line">    var precision = 2e-10; //浮点类型计算时候与0比较时候的容差</span><br><span class="line">    var p1, p2;</span><br><span class="line">    var p = point; //point &#123;lat:xxx,lng:xxx&#125;</span><br><span class="line"> </span><br><span class="line">    p1 = pts[0];//left vertex</span><br><span class="line">    <span class="keyword">for</span>(var i = 1; i &lt;= N; ++i)&#123;</span><br><span class="line">        <span class="keyword">if</span>((p.lat==p1.lat)&amp;&amp;(p.lng==p1.lng))&#123;</span><br><span class="line">           <span class="built_in">return</span> boundOrVertex;</span><br><span class="line">        &#125;</span><br><span class="line">        p2 = pts[i % N];</span><br><span class="line">        <span class="keyword">if</span>(p.lat &lt; Math.min(p1.lat, p2.lat) || p.lat &gt; Math.max(p1.lat, p2.lat))&#123;</span><br><span class="line">           p1 = p2;</span><br><span class="line">           <span class="built_in">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(p.lat &gt; Math.min(p1.lat, p2.lat) &amp;&amp; p.lat &lt; Math.max(p1.lat, p2.lat))&#123;</span><br><span class="line">            <span class="keyword">if</span>(p.lng &lt;= Math.max(p1.lng, p2.lng))&#123;</span><br><span class="line">               <span class="keyword">if</span>(p1.lat == p2.lat &amp;&amp; p.lng &gt;= Math.min(p1.lng, p2.lng))&#123;</span><br><span class="line">                    <span class="built_in">return</span> boundOrVertex;</span><br><span class="line">               &#125;</span><br><span class="line">               <span class="keyword">if</span>(p1.lng == p2.lng)&#123;</span><br><span class="line">                  <span class="keyword">if</span>(p1.lng == p.lng)&#123;</span><br><span class="line">                       <span class="built_in">return</span> boundOrVertex;</span><br><span class="line">                   &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                      ++intersectCount;</span><br><span class="line">                   &#125;</span><br><span class="line">               &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    var xinters = (p.lat - p1.lat) * (p2.lng - p1.lng) / (p2.lat - p1.lat) + p1.lng;</span><br><span class="line">                    <span class="keyword">if</span>(Math.abs(p.lng - xinters) &lt; precision)&#123;</span><br><span class="line">                        <span class="built_in">return</span> boundOrVertex;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">if</span>(p.lng &lt; xinters)&#123;</span><br><span class="line">                       ++intersectCount;</span><br><span class="line">                    &#125;</span><br><span class="line">               &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(p.lat == p2.lat &amp;&amp; p.lng &lt;= p2.lng)&#123;</span><br><span class="line">                var p3 = pts[(i+1) % N];</span><br><span class="line">                <span class="keyword">if</span>(p.lat &gt;= Math.min(p1.lat, p3.lat) &amp;&amp; p.lat &lt;= Math.max(p1.lat, p3.lat))&#123;</span><br><span class="line">                    ++intersectCount;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    intersectCount += 2;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">         &#125;</span><br><span class="line">         p1 = p2;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(intersectCount % 2 == 0)&#123;//偶数在多边形外</span><br><span class="line">       <span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123; //奇数在多边形内</span><br><span class="line">       <span class="built_in">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://syivsy-apep.github.io/2022/03/11/ES6%E8%A7%84%E8%8C%83%E6%95%B4%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Syivsy-Apep">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Syivsy-Apep的前端博客站">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/11/ES6%E8%A7%84%E8%8C%83%E6%95%B4%E7%90%86/" class="post-title-link" itemprop="url">ES6规范整理</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-03-11 22:11:03" itemprop="dateCreated datePublished" datetime="2022-03-11T22:11:03+08:00">2022-03-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-14 08:47:54" itemprop="dateModified" datetime="2022-03-14T08:47:54+08:00">2022-03-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ES6/" itemprop="url" rel="index"><span itemprop="name">ES6</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="ES6-语法部分"><a href="#ES6-语法部分" class="headerlink" title="ES6 语法部分"></a>ES6 语法部分</h1><blockquote>
+<ol>
+<li>块作用域声明</li>
+</ol>
+</blockquote>
+<p>JavaScript中变量作用域的基本单元一直是function。如果需要声明一个块作用域，最普遍的做法除了<strong>普通的函数声明外</strong>，就是立即调用函数表达式（IIFE）。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var a &#x3D; 2;S</span><br><span class="line">(function IIFE()&#123;</span><br><span class="line">  var a &#x3D; 3;</span><br><span class="line">  console.log(a); &#x2F;&#x2F;3</span><br><span class="line"> &#125;)();</span><br><span class="line">console.log(a) &#x2F;&#x2F; 2;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>1.1 let 声明</p>
+</blockquote>
+<p>使用<strong>let</strong> 只需要一对{…} 就可以创建绑定到任何块的声明。不像<strong>var</strong>那样声明的变量总数归属于包含函数（即全局，如果在最顶层的话）作用域。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var a &#x3D; 2;</span><br><span class="line">&#123;</span><br><span class="line">  let a &#x3D; 3;</span><br><span class="line">  console.log(a); &#x2F;&#x2F;3</span><br><span class="line">&#125;</span><br><span class="line">console.log(a);&#x2F;&#x2F;2</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>1.2 const 声明</p>
+</blockquote>
+<p><strong>const</strong> ，用于创建常量。常量的值在声明时设定之后就不允许改变了。<strong>const</strong> 声明必须要有显式的初始化。<br>常量并不是对一个值本身的限制，而是对赋值的那个变量的限制。换句话是，这个值并没有因为<strong>const</strong>被锁定或者不可变，只是赋值本身不可变。如果这个值是一个复杂值，比如对象或数组，其内容依然是可以改变的。例如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  const a &#x3D; [1,2,3]</span><br><span class="line">  a.push(4);</span><br><span class="line">  console.log(a); &#x2F;&#x2F; [1,2,3,4]</span><br><span class="line">  a &#x3D; 42; &#x2F;&#x2F;typeError;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>1.3 块级作用域函数</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  foo(); &#x2F;&#x2F;调用成功</span><br><span class="line">  function foo()&#123;</span><br><span class="line">    &#x2F;&#x2F;...</span><br><span class="line">  &#125;</span><br><span class="line">  foo(); &#x2F;&#x2F;ReferenceError</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>foo()函数声明在{…}块内。ES6支持块作用域，所以在块外不可用。但是还是要注意它在块内提升了，与<strong>let</strong>声明不同。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://syivsy-apep.github.io/2022/02/10/%E6%90%9E%E6%87%82extend%E5%92%8C$mount%E5%8E%9F%E7%90%86%E5%B9%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%91%BD%E4%BB%A4%E5%BC%8FConfirm%E5%BC%B9%E7%AA%97%E7%BB%84%E4%BB%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Syivsy-Apep">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Syivsy-Apep的前端博客站">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/10/%E6%90%9E%E6%87%82extend%E5%92%8C$mount%E5%8E%9F%E7%90%86%E5%B9%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%91%BD%E4%BB%A4%E5%BC%8FConfirm%E5%BC%B9%E7%AA%97%E7%BB%84%E4%BB%B6/" class="post-title-link" itemprop="url">搞懂extend和$mount原理并实现一个命令式Confirm弹窗组件</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-02-10 09:33:30" itemprop="dateCreated datePublished" datetime="2022-02-10T09:33:30+08:00">2022-02-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-11 22:09:58" itemprop="dateModified" datetime="2022-03-11T22:09:58+08:00">2022-03-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue/" itemprop="url" rel="index"><span itemprop="name">Vue</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="原理解析之extend和-mount"><a href="#原理解析之extend和-mount" class="headerlink" title="原理解析之extend和$mount"></a>原理解析之extend和$mount</h1><p>这两个都是<code>vue</code>提供的<code>API</code>，在<code>vue</code>的内部也有使用过这一对<code>API</code>。遇到嵌套组件时，首先将子组件转为组件形式的<code>VNode</code>时，会将引入的组件对象使用extend转为子组件的构造函数，作为<code>VNode</code>的一个属性<code>Ctor</code>；然后在将<code>VNode</code>转为真实的<code>Dom</code>的时候实例化这个构造函数；最后实例化完成后手动调用<code>$mount</code>进行挂载，将真实<code>Dom</code>插入到父节点内完成渲染。</p>
+<p>即：<br>我们自己对组件对象使用<code>extend</code>转为构造函数，然后手动调用<code>$mount</code>转为真实<code>Dom</code>，由我们来指定一个父节点让它插入到指定的位置。</p>
+<h2 id="extend"><a href="#extend" class="headerlink" title="extend"></a>extend</h2><p>接受的是一个组件对象，再执行<code>extend</code>时将继承基类构造器上的一些属性、原型方法、静态方法等，最后返回<code>Sub</code>这么一个构造好的子组件构造函数。拥有和<code>vue</code>基类一样的能力，并在实例化时会执行继承来的<code>_init</code>方法完成子组件的初始化。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">Vue.extend &#x3D; fuction(extendOption&#x3D;&#123;&#125;) &#x3D;&gt; &#123;</span><br><span class="line">  const Super &#x3D; this &#x2F;&#x2F;Vue的基本构造函数</span><br><span class="line">  const name &#x3D; extendOption.name || Super.options.name</span><br><span class="line"></span><br><span class="line">  const Sub &#x3D; fuction (option) &#x3D; &#123;&#x2F;&#x2F;定义构造函数</span><br><span class="line">    this._init(option); &#x2F;&#x2F;_init继承而来</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  Sub.prototype &#x3D; Object.create(Super.prototype) &#x2F;&#x2F;继承基本Vue初始化定义的原型方法</span><br><span class="line">  Sub.prototype.constructor &#x3D; Sub; &#x2F;&#x2F;构造函数指向子类</span><br><span class="line">  Sub.options &#x3D; mergeOptions( &#x2F;&#x2F;子类合并options</span><br><span class="line">    Super.options, &#x2F;&#x2F; components, directives, filters, _base</span><br><span class="line">    extendOption &#x2F;&#x2F; 传入的组件对象</span><br><span class="line">  )</span><br><span class="line">  Sub[&#39;super&#39;] &#x3D; Super &#x2F;&#x2F; Vue基类</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F; 将基类的静态方法赋值给子类</span><br><span class="line">  Sub.extend &#x3D; Super.extend</span><br><span class="line">  Sub.mixin &#x3D; Super.mixin</span><br><span class="line">  Sub.use &#x3D; Super.use</span><br><span class="line"></span><br><span class="line">  ASSET_TYPES.forEach(function (type) &#123; &#x2F;&#x2F; [&#39;component&#39;, &#39;directive&#39;, &#39;filter&#39;]</span><br><span class="line">    Sub[type] &#x3D; Super[type]</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  if (name) &#123;  让组件可以递归调用自己，所以一定要定义name属性</span><br><span class="line">    Sub.options.components[name] &#x3D; Sub  &#x2F;&#x2F; 将子类挂载到自己的components属性下</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  Sub.superOptions &#x3D; Super.options</span><br><span class="line">  Sub.extendOptions &#x3D; extendOptions</span><br><span class="line"></span><br><span class="line">  return Sub  &#x2F;&#x2F; 返回子组件的构造函数</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="实例化Sub"><a href="#实例化Sub" class="headerlink" title="实例化Sub"></a>实例化Sub</h2><p>执行<code>_init</code>组件初始化的一系列操作，初始化事件、生命周期、状态等等。将<code>data</code>或<code>props</code>内定义的变量挂载到当前<code>this</code>实例下，最后返回一个实例化后的对象。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Vue.prototype._init &#x3D; function(options) &#123;  &#x2F;&#x2F; 初始化</span><br><span class="line">  ...</span><br><span class="line">  initLifecycle(vm)</span><br><span class="line">  initEvents(vm)</span><br><span class="line">  initRender(vm)</span><br><span class="line">  callHook(vm, &#39;beforeCreate&#39;)</span><br><span class="line">  initInjections(vm)</span><br><span class="line">  initState(vm)</span><br><span class="line">  initProvide(vm)</span><br><span class="line">  callHook(vm, &#39;created&#39;)  &#x2F;&#x2F; 初始化阶段完成</span><br><span class="line">  ...</span><br><span class="line">  </span><br><span class="line">  if (vm.$options.el) &#123;  &#x2F;&#x2F; 开始挂载阶段</span><br><span class="line">    vm.$mount(vm.$options.el)  &#x2F;&#x2F; 执行挂载</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -779,95 +1186,11 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://syivsy-apep.github.io/2021/05/18/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Syivsy-Apep">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Syivsy-Apep的前端博客站">
-    </span>
-
-    
-    
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/05/18/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-05-18 11:26:16" itemprop="dateCreated datePublished" datetime="2021-05-18T11:26:16+08:00">2021-05-18</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-12-09 11:29:06" itemprop="dateModified" datetime="2021-12-09T11:29:06+08:00">2021-12-09</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
 
 
 
